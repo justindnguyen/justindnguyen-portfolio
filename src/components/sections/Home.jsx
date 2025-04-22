@@ -6,13 +6,13 @@ export const Home = () => {
             <RevealOnScroll>
                 <div className="text-center z-10 px-4">
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                        <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-white to-blue-600 bg-clip-text text-transparent">
                             Justin Nguyen
                         </span>
                     </h1>
 
                     <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                        Hi, I'm Justin Nguyen, a recent computer science graduate from Cal State Fullerton. I'm currently building web development projects and studying for CompTIA certifications to strengthen my skills and pursue a career in the IT industry.
+                        Hello, I'm Justin, a recent computer science graduate from Cal State Fullerton. I'm currently building web development projects and studying for CompTIA certifications to strengthen my skills and pursue a career in the IT industry.
                     </p>
 
                     <div className="flex justify-center space-x-4">
