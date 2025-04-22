@@ -55,4 +55,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 - 📧 Email: justindnguyen03@gmail.com  
 - 💼 LinkedIn: [justin-nguyen-35604b1b1](https://www.linkedin.com/in/justin-nguyen-35604b1b1)  
 - 💻 GitHub: [@justindnguyen](https://github.com/justindnguyen)
-```
