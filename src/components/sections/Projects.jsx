@@ -25,7 +25,7 @@ export const Projects = () => {
                                 ))}
                             </div>
                             <div className="flex justify-between items-center">
-                                <a href="https://github.com/justindnguyen" target="_blank"
+                                <a href="https://github.com/justindnguyen/justindnguyen-portfolio" target="_blank"
                                 rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors my-4">View Project →</a>
                             </div>
                         </div>

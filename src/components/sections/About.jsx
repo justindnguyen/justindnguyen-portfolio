@@ -1,9 +1,10 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 
 export const About = () => {
     const frontendSkills = [
-        "HTML",
-        "CSS",
+        "HTML5",
+        "CSS3",
         "JavaScript",
         "React",
         "Tailwind CSS",
@@ -15,7 +16,7 @@ export const About = () => {
     ];
 
     const backendSkills = [
-        "Node.js",
+        "Node.js/Npm",
         "Express.js",
         "PostgreSQL",
         "SQL",
@@ -103,6 +104,46 @@ export const About = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 mt-6 justify-center">
+                        <a
+                            href="https://github.com/justindnguyen"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
+                        >
+                            <FaGithub className="w-5 h-5" />
+                            GitHub
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/justin-nguyen-35604b1b1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
+                        >
+                            <FaLinkedin className="w-5 h-5" />
+                            LinkedIn
+                        </a>
+
+                        <a
+                            href="mailto:justindnguyen03@gmail.com"
+                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
+                        >
+                            <FaEnvelope className="w-5 h-5" />
+                            Email
+                        </a>
+
+                        <a
+                            href={`${import.meta.env.BASE_URL}resume.pdf`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
+                        >
+                            <FaFileAlt className="w-5 h-5" />
+                            Resume
+                        </a>
                     </div>
                 </div>
             </RevealOnScroll>

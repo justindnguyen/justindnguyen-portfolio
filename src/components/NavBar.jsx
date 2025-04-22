@@ -29,4 +29,4 @@ export const NavBar = ({menuOpen, setMenuOpen}) => {
             </div>
         </nav>
     );
-}
+};
