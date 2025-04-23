@@ -14,7 +14,7 @@ export const About = () => {
         "Inventory Management",
         "Fast-Paced Multitasking",
     ];
-    const certifications = ["CompTIA A+", "Network+", "Security+"];
+    const certifications = ["CompTIA A+", "CompTIA Network+", "CompTIA Security+"];
 
     return (
         <section id="about" className="min-h-screen flex items-center justify-center py-20">
