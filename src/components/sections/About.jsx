@@ -26,13 +26,10 @@ export const About = () => {
 
                     <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
                         <p className="text-gray-300 mb-6">
-                            Hi, I’m Justin Nguyen — a recent computer science graduate from Cal State Fullerton. Growing up, I was always curious about how technology works, whether it was fixing things around the house or messing around with my computer settings just to see what would happen. That curiosity turned into a passion for problem-solving, which led me to pursue a degree in computer science.
+                            Hi, I’m Justin Nguyen — a recent computer science graduate from Cal State Fullerton. I’ve always been curious about how things work, especially when it comes to technology. That curiosity led me to study computer science, where I developed a strong interest in solving problems and building things that are useful.
                         </p>
                         <p className="text-gray-300 mb-6">
-                            Over the past few years, I’ve developed a strong interest in both web development and IT. I enjoy building clean, user-friendly websites and figuring out how to make things run more efficiently behind the scenes. I’m currently working on personal web projects to sharpen my frontend and backend skills, while also studying for CompTIA certifications to grow my knowledge in areas like system support and networking.
-                        </p>
-                        <p className="text-gray-300 mb-6">
-                            Outside of tech, I enjoy gaming, reading manga, and spending time with my family — all of which fuel my creativity and keep me grounded. I’m eager to apply everything I’ve learned in a real-world setting and continue growing as both a developer and an IT professional.
+                            I enjoy learning new tools and technologies that help me improve and adapt. Right now, I’m working on personal projects to grow my technical skills and studying for CompTIA certifications to strengthen my knowledge of system support and networking. Outside of tech, I enjoy playing games like Path of Exile and League of Legends, reading One Piece, and spending time with my family.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -93,7 +90,7 @@ export const About = () => {
                     </div>
 
                     <div className="mt-8 p-6 rounded-xl border border-white/10 hover:-translate-y-1 transition-all flex flex-col items-center">
-                        <h3 className="text-xl font-bold mb-4 text-center">Certifications In Progress</h3>
+                        <h3 className="text-xl font-bold mb-4 text-center">Certifications (In Progress)</h3>
                         <div className="flex flex-wrap gap-2 justify-center text-center">
                             {certifications.map((cert, key) => (
                             <span
