@@ -29,7 +29,7 @@ export const About = () => {
                             Hi, I’m Justin Nguyen — a recent computer science graduate from Cal State Fullerton. I’ve always been curious about how things work, especially when it comes to technology. That curiosity led me to study computer science, where I developed a strong interest in solving problems and building things that are useful.
                         </p>
                         <p className="text-gray-300 mb-6">
-                            I enjoy learning new tools and technologies that help me improve and adapt. Right now, I’m working on personal projects to grow my technical skills and studying for CompTIA certifications to strengthen my knowledge of system support and networking. Outside of tech, I enjoy playing games like Path of Exile and League of Legends, reading One Piece, and spending time with my family.
+                            I enjoy learning new tools and technologies that help me improve and adapt. Right now, I’m working on personal projects to grow my technical skills and studying for CompTIA certifications to strengthen my knowledge of system support and networking. Outside of tech, I enjoy playing video games, reading manga, and spending time with my family.
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
