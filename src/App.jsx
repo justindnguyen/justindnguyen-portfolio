@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import { LoadingScreen } from './components/LoadingScreen';
 import { NavBar } from './components/NavBar';
 import { MobileMenu } from './components/MobileMenu';
