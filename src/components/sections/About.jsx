@@ -159,45 +159,6 @@ export const About = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 mt-6 justify-center">
-                        <a
-                            href="https://github.com/justindnguyen"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1"
-                        >
-                            <FaGithub className="w-5 h-5" />
-                            GitHub
-                        </a>
-
-                        <a
-                            href="https://www.linkedin.com/in/justin-nguyen-35604b1b1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1"
-                        >
-                            <FaLinkedin className="w-5 h-5" />
-                            LinkedIn
-                        </a>
-
-                        <a
-                            href="mailto:justindnguyen03@gmail.com"
-                            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1"
-                        >
-                            <FaEnvelope className="w-5 h-5" />
-                            Email
-                        </a>
-
-                        <a
-                            href={`${import.meta.env.BASE_URL}resume.pdf`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition transform hover:-translate-y-1"
-                        >
-                            <FaFileAlt className="w-5 h-5" />
-                            Resume
-                        </a>
-                    </div>
                 </div>
             </RevealOnScroll>
         </section>
