@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { projects } from "./data/projects";
 import "./index.css";
 
@@ -6,6 +6,68 @@ const assetUrl = (path) =>
   `${import.meta.env.BASE_URL}${String(path).replace(/^\/+/, "")}`;
 
 const projectUrl = (slug) => `?project=${encodeURIComponent(slug)}`;
+
+const cleanCurrentUrl = () => {
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+};
+
+const scrollToSection = (sectionId) => {
+  document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  cleanCurrentUrl();
+};
+
+const returnHomeTo = (sectionId) => {
+  window.sessionStorage.setItem("portfolio-section", sectionId);
+  window.location.assign(import.meta.env.BASE_URL);
+};
+
+function LinkIcon({ name }) {
+  const iconProps = {
+    width: 18,
+    height: 18,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  if (name === "github") {
+    return (
+      <svg {...iconProps}>
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4" />
+        <path d="M8 19c-3 .9-3-1.5-4-2" />
+      </svg>
+    );
+  }
+
+  if (name === "linkedin") {
+    return (
+      <svg {...iconProps}>
+        <rect x="3" y="3" width="18" height="18" rx="4" />
+        <path d="M7 10v7M7 7h.01M11 17v-7M11 13a3.5 3.5 0 0 1 7 0v4" />
+      </svg>
+    );
+  }
+
+  if (name === "email") {
+    return (
+      <svg {...iconProps}>
+        <rect x="3" y="5" width="18" height="14" rx="3" />
+        <path d="m4 7 8 6 8-6" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...iconProps}>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v5h5M9 13h6M9 17h6" />
+    </svg>
+  );
+}
 
 function ProjectCard({ project }) {
   const handlePress = (event) => {
@@ -45,12 +107,68 @@ function ProjectCard({ project }) {
 }
 
 function HomePage() {
+  const [activeSection, setActiveSection] = useState("top");
+
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    cleanCurrentUrl();
+    const requestedSection = window.sessionStorage.getItem("portfolio-section");
+    window.sessionStorage.removeItem("portfolio-section");
+
+    window.requestAnimationFrame(() => {
+      if (requestedSection) {
+        document.getElementById(requestedSection)?.scrollIntoView({ block: "start" });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["top", "projects", "links"];
+
+    const updateActiveSection = () => {
+      const triggerPoint = window.scrollY + (window.innerHeight * 0.35);
+      let currentSection = sectionIds[0];
+
+      sectionIds.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section && section.offsetTop <= triggerPoint) currentSection = sectionId;
+      });
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        currentSection = sectionIds[sectionIds.length - 1];
+      }
+
+      setActiveSection((current) => current === currentSection ? current : currentSection);
+    };
+
+    const frame = window.requestAnimationFrame(updateActiveSection);
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
+  const goToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    scrollToSection(sectionId);
+  };
+
   return (
     <>
       <header className="site-header">
         <nav aria-label="Primary navigation">
-          <a href="#top">About</a>
-          <a href="#projects">Projects</a>
+          <button className={activeSection === "top" ? "is-active" : ""} aria-current={activeSection === "top" ? "location" : undefined} type="button" onClick={() => goToSection("top")}>About</button>
+          <button className={activeSection === "projects" ? "is-active" : ""} aria-current={activeSection === "projects" ? "location" : undefined} type="button" onClick={() => goToSection("projects")}>Projects</button>
+          <button className={activeSection === "links" ? "is-active" : ""} aria-current={activeSection === "links" ? "location" : undefined} type="button" onClick={() => goToSection("links")}>Links</button>
         </nav>
       </header>
 
@@ -101,6 +219,7 @@ function HomePage() {
               <p>CompTIA A+ currently in progress</p>
             </div>
           </div>
+
         </section>
 
         <section className="projects section" id="projects">
@@ -113,6 +232,20 @@ function HomePage() {
             <div className="project-grid">
               {projects.map((project) => <ProjectCard project={project} key={project.slug} />)}
             </div>
+          </div>
+        </section>
+
+        <section className="links-section section" id="links">
+          <div className="section-label">
+            <span>02</span>
+            <p>Links</p>
+          </div>
+
+          <div className="links-content" aria-label="Contact and profile links">
+            <a href="https://github.com/justindnguyen" target="_blank" rel="noreferrer"><LinkIcon name="github" />GitHub</a>
+            <a href="https://www.linkedin.com/in/justin-nguyen-35604b1b1" target="_blank" rel="noreferrer"><LinkIcon name="linkedin" />LinkedIn</a>
+            <a href="mailto:justindnguyen03@gmail.com"><LinkIcon name="email" />Email</a>
+            <a href={assetUrl("resume.pdf")} target="_blank" rel="noreferrer"><LinkIcon name="resume" />Resume</a>
           </div>
         </section>
       </main>
@@ -134,13 +267,14 @@ function ProjectDetail({ project }) {
     <>
       <header className="site-header">
         <nav aria-label="Primary navigation">
-          <a href="./#top">About</a>
-          <a href="./#projects">Projects</a>
+          <button type="button" onClick={() => returnHomeTo("top")}>About</button>
+          <button className="is-active" aria-current="page" type="button" onClick={() => returnHomeTo("projects")}>Projects</button>
+          <button type="button" onClick={() => returnHomeTo("links")}>Links</button>
         </nav>
       </header>
 
       <main className="detail-main" id="main">
-        <a className="back-link" href="./#projects"><span aria-hidden="true">←</span> All projects</a>
+        <button className="back-link" type="button" onClick={() => returnHomeTo("projects")}><span aria-hidden="true">←</span> All projects</button>
 
         <article className="detail-hero">
           <div className="detail-meta">
@@ -157,12 +291,12 @@ function ProjectDetail({ project }) {
         <div className="detail-layout">
           <aside className="detail-index" aria-label="Project page sections">
             <p>On this page</p>
-            <a href="#progress">Progress</a>
-            {hasImages && <a href="#images">Images</a>}
-            <a href="#notes">Notes</a>
-            <a href="#learned">What I learned</a>
-            <a href="#problems">Problems and solutions</a>
-            {hasDocuments && <a href="#documents">Documents</a>}
+            <button type="button" onClick={() => scrollToSection("progress")}>Progress</button>
+            {hasImages && <button type="button" onClick={() => scrollToSection("images")}>Images</button>}
+            <button type="button" onClick={() => scrollToSection("notes")}>Notes</button>
+            <button type="button" onClick={() => scrollToSection("learned")}>What I learned</button>
+            <button type="button" onClick={() => scrollToSection("problems")}>Problems and solutions</button>
+            {hasDocuments && <button type="button" onClick={() => scrollToSection("documents")}>Documents</button>}
           </aside>
 
           <div className="detail-content">
