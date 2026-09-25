@@ -58,13 +58,11 @@ function HomePage() {
         <section className="intro-section" id="top">
           <div className="intro-heading">
             <div>
-              <p className="overline">IT Support Portfolio</p>
               <h1>Justin Nguyen</h1>
               <p className="intro-role">
                 Computer Science graduate focused on IT support, desktop troubleshooting, and networking.
               </p>
             </div>
-            <a className="primary-link" href="#projects">View my projects <span aria-hidden="true">↓</span></a>
           </div>
 
           <p className="intro-copy">
@@ -112,10 +110,6 @@ function HomePage() {
           </div>
 
           <div className="projects-content">
-            <div className="projects-heading">
-              <h2>Selected work and practice labs.</h2>
-              <p>Each project focuses on practical support skills: setup, troubleshooting, testing, and documentation.</p>
-            </div>
             <div className="project-grid">
               {projects.map((project) => <ProjectCard project={project} key={project.slug} />)}
             </div>
